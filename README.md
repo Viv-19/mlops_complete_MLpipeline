@@ -46,7 +46,7 @@ spam_classification.ipynb: Contains data loading, cleaning, feature extraction, 
 
  
 
-** Tech Stack**
+** **Tech Stack****
 
 Python
 
