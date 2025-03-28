@@ -2,6 +2,8 @@
 
 This project aims to provide a comprehensive, end-to-end implementation of a Machine Learning pipeline for classifying spam messages, with integrated tools for experiment tracking and data versioning using DVC and AWS S3. While the model training and basic evaluation are currently implemented, integration with DVC and cloud storage is ongoing.
 
+
+
 **🚀 Project Goals**
 
 ✅ Build and evaluate a spam classification model
@@ -14,6 +16,8 @@ This project aims to provide a comprehensive, end-to-end implementation of a Mac
 
 🔄 Enable easy collaboration and scalability
 
+
+
 **✅ Current Progress**
 
 ✔ Data & Model
@@ -23,6 +27,8 @@ Model: Initial implementation with text preprocessing, vectorization (TF-IDF), a
 
 ✔ Notebook
 spam_classification.ipynb: Contains data loading, cleaning, feature extraction, and baseline model training.
+
+
 
 **🛠️ Upcoming Tasks**
 
@@ -35,6 +41,8 @@ spam_classification.ipynb: Contains data loading, cleaning, feature extraction, 
  Log metrics and parameters using DVC’s experiment tracking
 
  Create dvc.yaml pipeline stages for reproducibility
+
+ 
 
 ** Tech Stack**
 
