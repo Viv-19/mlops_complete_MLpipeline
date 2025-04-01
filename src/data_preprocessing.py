@@ -5,13 +5,21 @@ from sklearn.preprocessing import LabelEncoder
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import string
+
+
+
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 
+
+
+
 # Ensure the "logs" directory exists
 log_dir = 'logs'
 os.makedirs(log_dir, exist_ok=True)
+
+
 
 # Setting up logger
 logger = logging.getLogger('data_preprocessing')
@@ -31,6 +39,10 @@ file_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
+
+
+
+
 def transform_text(text):
     """
     Transforms the input text by converting it to lowercase, tokenizing, removing stopwords and punctuation, and stemming.
@@ -48,6 +60,10 @@ def transform_text(text):
     text = [ps.stem(word) for word in text]
     # Join the tokens back into a single string
     return " ".join(text)
+
+
+
+
 
 def preprocess_df(df, text_column='text', target_column='target'):
     """
@@ -75,6 +91,10 @@ def preprocess_df(df, text_column='text', target_column='target'):
     except Exception as e:
         logger.error('Error during text normalization: %s', e)
         raise
+
+
+
+
 
 def main(text_column='text', target_column='target'):
     """
@@ -105,6 +125,8 @@ def main(text_column='text', target_column='target'):
     except Exception as e:
         logger.error('Failed to complete the data transformation process: %s', e)
         print(f"Error: {e}")
+
+
 
 if __name__ == '__main__':
     main()

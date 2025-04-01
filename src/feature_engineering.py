@@ -4,9 +4,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import logging
 import yaml
 
-
-
-
 # Ensure the "logs" directory exists
 log_dir = 'logs'
 os.makedirs(log_dir, exist_ok=True)
@@ -29,28 +26,22 @@ file_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
-
-
-
-
-# def load_params(params_path: str) -> dict:
-#     """Load parameters from a YAML file."""
-#     try:
-#         with open(params_path, 'r') as file:
-#             params = yaml.safe_load(file)
-#         logger.debug('Parameters retrieved from %s', params_path)
-#         return params
-#     except FileNotFoundError:
-#         logger.error('File not found: %s', params_path)
-#         raise
-#     except yaml.YAMLError as e:
-#         logger.error('YAML error: %s', e)
-#         raise
-#     except Exception as e:
-#         logger.error('Unexpected error: %s', e)
-#         raise
-
-
+def load_params(params_path: str) -> dict:
+    """Load parameters from a YAML file."""
+    try:
+        with open(params_path, 'r') as file:
+            params = yaml.safe_load(file)
+        logger.debug('Parameters retrieved from %s', params_path)
+        return params
+    except FileNotFoundError:
+        logger.error('File not found: %s', params_path)
+        raise
+    except yaml.YAMLError as e:
+        logger.error('YAML error: %s', e)
+        raise
+    except Exception as e:
+        logger.error('Unexpected error: %s', e)
+        raise
 
 def load_data(file_path: str) -> pd.DataFrame:
     """Load data from a CSV file."""
@@ -65,8 +56,6 @@ def load_data(file_path: str) -> pd.DataFrame:
     except Exception as e:
         logger.error('Unexpected error occurred while loading the data: %s', e)
         raise
-
-
 
 def apply_tfidf(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: int) -> tuple:
     """Apply TfIdf to the data."""
@@ -90,10 +79,8 @@ def apply_tfidf(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features:
         logger.debug('tfidf applied and data transformed')
         return train_df, test_df
     except Exception as e:
-        logger.error('Error during tfid transformation: %s', e)
+        logger.error('Error during Bag of Words transformation: %s', e)
         raise
-
-
 
 def save_data(df: pd.DataFrame, file_path: str) -> None:
     """Save the dataframe to a CSV file."""
@@ -105,13 +92,11 @@ def save_data(df: pd.DataFrame, file_path: str) -> None:
         logger.error('Unexpected error occurred while saving the data: %s', e)
         raise
 
-
-
 def main():
     try:
-        # params = load_params(params_path='params.yaml')
-        # max_features = params['feature_engineering']['max_features']
-        max_features = 50
+        params = load_params(params_path='params.yaml')
+        max_features = params['feature_engineering']['max_features']
+        # max_features = 50
 
         train_data = load_data('./data/interim/train_processed.csv')
         test_data = load_data('./data/interim/test_processed.csv')
